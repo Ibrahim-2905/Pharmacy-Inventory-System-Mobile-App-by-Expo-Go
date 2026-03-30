@@ -1,50 +1,197 @@
-# Welcome to your Expo app 👋
+<div align="center">
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+<img src="https://img.shields.io/badge/React%20Native-20232A?style=for-the-badge&logo=react&logoColor=61DAFB" />
+<img src="https://img.shields.io/badge/Expo-000020?style=for-the-badge&logo=expo&logoColor=white" />
+<img src="https://img.shields.io/badge/SQLite-07405E?style=for-the-badge&logo=sqlite&logoColor=white" />
+<img src="https://img.shields.io/badge/Google%20Drive-4285F4?style=for-the-badge&logo=googledrive&logoColor=white" />
+<img src="https://img.shields.io/badge/Offline%20First-34A853?style=for-the-badge&logo=checkmarx&logoColor=white" />
 
-## Get started
+# 💊 Pharmacy Inventory Manager
 
-1. Install dependencies
+**A fully offline mobile app for local pharmacy & shop owners — no internet required.**
 
-   ```bash
-   npm install
-   ```
+Built with React Native + Expo Go | SQLite local database | Google Drive backup
 
-2. Start the app
+</div>
 
-   ```bash
-   npx expo start
-   ```
+---
 
-In the output, you'll find options to open the app in a
+## 📖 About
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+**Pharmacy Inventory Manager** is a mobile application built for small local shop and pharmacy owners who face challenges with internet connectivity. The app runs **100% offline** — all data is stored locally on the device using SQLite. Owners can manage their medicines, track sales, apply discounts, and view profit/loss reports without ever needing a Wi-Fi connection.
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+When a backup is needed, a simple Google Sign-In allows automatic backup to Google Drive — and restoration is just as easy by importing the backup file.
 
-## Get a fresh project
+> Built for the real world — where internet is a luxury, not a guarantee.
 
-When you're ready, run:
+---
+
+## ✨ Features
+
+### 💊 Medicine Management
+- Add medicines with:
+  - Medicine name
+  - Purchase price (per single tablet)
+  - Sell price (per single tablet)
+  - Quantity / stock
+- Edit or delete existing medicine records
+- View full inventory list at a glance
+
+### 🛒 Sales & Billing
+- Sell medicines by quantity
+- Apply **discount (%)** on individual sales
+- Automatic profit/loss calculation per sale
+- Stock is automatically deducted on every sale
+
+### 📊 Reports
+- **Today's Report** — sales, revenue, profit/loss for the current day
+- **Monthly Report** — full month summary with breakdowns
+- Download/export reports as files
+- Profit & loss calculation **per day** and **per month**
+
+### ☁️ Backup & Restore
+- **Google Drive Backup** — sign in once with Google, then backup is automated
+- **Restore from file** — import your `.db` backup file anytime, no internet needed during restore
+- Works completely offline after initial Google sign-in
+
+### 📴 Fully Offline
+- Zero internet dependency for core functionality
+- All data lives on your phone (SQLite)
+- Perfect for areas with no or unstable internet
+
+---
+
+## 📱 Screenshots
+
+> *(Add your app screenshots here)*
+
+| Inventory | Add Medicine | Sales | Reports |
+|-----------|-------------|-------|---------|
+| ![inv](#) | ![add](#)   | ![sale](#) | ![rep](#) |
+
+---
+
+## 🛠️ Tech Stack
+
+| Technology | Purpose |
+|---|---|
+| [React Native](https://reactnative.dev/) | Mobile app framework |
+| [Expo Go](https://expo.dev/) | Development & distribution |
+| [SQLite (expo-sqlite)](https://docs.expo.dev/versions/latest/sdk/sqlite/) | Local offline database |
+| [Google Drive API](https://developers.google.com/drive) | Cloud backup |
+| [expo-auth-session](https://docs.expo.dev/versions/latest/sdk/auth-session/) | Google Sign-In |
+| [expo-file-system](https://docs.expo.dev/versions/latest/sdk/filesystem/) | File backup & restore |
+| [expo-sharing](https://docs.expo.dev/versions/latest/sdk/sharing/) | Export/share reports |
+
+---
+
+## 🚀 Getting Started
+
+### Prerequisites
+
+- [Node.js](https://nodejs.org/) (v18 or above)
+- [Expo CLI](https://docs.expo.dev/get-started/installation/)
+- Expo Go app on your Android or iOS device
+
+### Installation
 
 ```bash
-npm run reset-project
+# Clone the repository
+git clone https://github.com/your-username/pharmacy-inventory-manager.git
+
+# Navigate to the project folder
+cd pharmacy-inventory-manager
+
+# Install dependencies
+npm install
+
+# Start the Expo development server
+npx expo start
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+Scan the QR code with **Expo Go** on your phone to run the app.
 
-## Learn more
+---
 
-To learn more about developing your project with Expo, look at the following resources:
+## 🗄️ Database Structure (SQLite)
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+### `medicines` table
+| Column | Type | Description |
+|--------|------|-------------|
+| id | INTEGER | Primary key |
+| name | TEXT | Medicine name |
+| purchase_price | REAL | Cost per tablet |
+| sell_price | REAL | Selling price per tablet |
+| quantity | INTEGER | Current stock |
+| created_at | TEXT | Date added |
 
-## Join the community
+### `sales` table
+| Column | Type | Description |
+|--------|------|-------------|
+| id | INTEGER | Primary key |
+| medicine_id | INTEGER | Foreign key → medicines |
+| quantity_sold | INTEGER | Units sold |
+| discount_percent | REAL | Discount applied (%) |
+| total_amount | REAL | Final sale amount |
+| profit | REAL | Profit on this sale |
+| sale_date | TEXT | Date of sale |
 
-Join our community of developers creating universal apps.
+---
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+## ☁️ Backup & Restore Guide
+
+### Backup to Google Drive
+1. Go to **Settings** in the app
+2. Tap **Sign in with Google**
+3. Once signed in, tap **Backup Now** — or enable **Auto Backup**
+4. Your database file is saved to your Google Drive
+
+### Restore from File
+1. Locate your `.db` backup file (from Drive, WhatsApp, email, etc.)
+2. Go to **Settings → Restore**
+3. Select the backup file
+4. App restores all data instantly — **no internet needed**
+
+---
+
+## 📈 Reports Overview
+
+| Report | Details |
+|--------|---------|
+| Today's Sales | All sales made today, total revenue |
+| Monthly Sales | Full month breakdown by day |
+| Profit/Loss (Daily) | Net profit or loss for the day |
+| Profit/Loss (Monthly) | Net profit or loss for the month |
+| Export | Download report as file (share via WhatsApp, email, etc.) |
+
+---
+
+## 🤝 Contributing
+
+Pull requests are welcome! For major changes, please open an issue first to discuss what you'd like to change.
+
+1. Fork the repository
+2. Create your feature branch: `git checkout -b feature/your-feature`
+3. Commit your changes: `git commit -m 'Add some feature'`
+4. Push to the branch: `git push origin feature/your-feature`
+5. Open a Pull Request
+
+---
+
+## 📄 License
+
+This project is licensed under the [MIT License](LICENSE).
+
+---
+
+## 👨‍💻 Author
+
+Built with ❤️ for local shop owners who deserve great tools — internet or not.
+
+> *"Technology should work for everyone, not just those with a fast connection."*
+
+---
+
+<div align="center">
+  <sub>Made with React Native + Expo | Offline First | Built for Pakistan's local shops</sub>
+</div>
