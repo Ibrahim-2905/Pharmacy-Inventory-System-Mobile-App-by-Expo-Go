@@ -67,7 +67,13 @@ When a backup is needed, a simple Google Sign-In allows automatic backup to Goog
 
 | Inventory | Add Medicine | Sales | Reports |
 |-----------|-------------|-------|---------|
-| ![inv](#) | ![add](#)   | ![sale](#) | ![rep](#) |
+![Image](https://github.com/user-attachments/assets/d64a2011-6935-4f49-b92b-e72a955c4ede)
+![Image](https://github.com/user-attachments/assets/fab7dd66-317c-4884-803f-084d1cce0665)
+![Image](https://github.com/user-attachments/assets/d234d726-61f4-4167-be8d-8d131d38b106)
+![Image](https://github.com/user-attachments/assets/aca84363-adbe-419f-ade0-3528dc4d93ce)
+![Image](https://github.com/user-attachments/assets/1150ba43-fe85-4734-882d-3c0bfbe67c14)
+![Image](https://github.com/user-attachments/assets/b1eb8d34-8d90-4fea-8f50-401821270b0a)
+![Image](https://github.com/user-attachments/assets/baa6195d-ba4c-493f-9022-35f219c7fc23)|
 
 ---
 
